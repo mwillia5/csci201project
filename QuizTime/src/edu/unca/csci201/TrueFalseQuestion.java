@@ -12,26 +12,32 @@ public class TrueFalseQuestion implements Question {
 
 	@Override
 	public String getTextPrompt() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return this.question;
 	}
 
 	@Override
 	public Answer[] getPossibleAnswers() throws NoAnswersException {
-			// TODO Auto-generated method stub
-		return null;
+		Answer[] a= {new TrueFalseAnswer(true), new TrueFalseAnswer(false)};
+		if(a==null)throw new NoAnswersException();
+		return a;
 	}
 
 	@Override
 	public Answer getCorrectAnswer() throws NoCorrectAnswerException {
-		// TODO Auto-generated method stub
-		return null;
+		Answer a=new TrueFalseAnswer(this.answer);
+		return a;
 	}
 
 	@Override
 	public Answer convertResponseToAnswer(String userResponse) throws InvalidResponseException {
-		// TODO Auto-generated method stub
-		return null;
+		String converted=userResponse.toUpperCase();
+		Boolean answ = null;
+		if(converted.equalsIgnoreCase("t")||converted.equals("true"))answ=true;
+		else if(converted.equalsIgnoreCase("f")||converted.equalsIgnoreCase("false"))answ=false;
+		else {throw new InvalidResponseException();}
+		Answer b=new TrueFalseAnswer(answ);
+		return b;
 	}
 
 }
