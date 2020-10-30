@@ -2,7 +2,7 @@ package edu.unca.csci201;
 
 public class TrueFalseAnswer implements Answer {
 	
-	Boolean answer;
+	private Boolean answer;
 	
 	public TrueFalseAnswer(boolean b) {
 		this.answer=b;

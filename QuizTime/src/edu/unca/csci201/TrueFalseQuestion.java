@@ -2,8 +2,8 @@ package edu.unca.csci201;
 
 public class TrueFalseQuestion implements Question {
 
-	String question="";
-	Boolean answer;
+	private String question="";
+	private Boolean answer;
 	
 	public TrueFalseQuestion(String string, boolean b) {
 		this.question=string;
