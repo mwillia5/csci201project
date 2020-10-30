@@ -1,29 +1,40 @@
 package edu.unca.csci201;
 
 public class FillinTheBlankQuestion implements Question {
+	
+	String question="";
+	String theanswer="";
+	
+	public FillinTheBlankQuestion(String quest, String answ) {
+		this.question=quest;
+		this.theanswer=answ;
+		
+	}
 
 	@Override
 	public String getTextPrompt() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.question;
 	}
 
 	@Override
 	public Answer[] getPossibleAnswers() throws NoAnswersException {
-		// TODO Auto-generated method stub
-		return null;
+		Answer[] a=null;
+		if(a==null)throw new NoAnswersException();
+		return a;
 	}
 
 	@Override
 	public Answer getCorrectAnswer() throws NoCorrectAnswerException {
-		// TODO Auto-generated method stub
-		return null;
+		SingleWordAnswer ans=new SingleWordAnswer(this.theanswer);
+		
+		return ans;
 	}
 
 	@Override
 	public Answer convertResponseToAnswer(String userResponse) throws InvalidResponseException {
-		// TODO Auto-generated method stub
-		return null;
+		SingleWordAnswer userans=new SingleWordAnswer(userResponse);
+		if(userResponse.contains(" ")||userResponse.isEmpty())throw new InvalidResponseException();
+		return userans;
 	}
 
 }

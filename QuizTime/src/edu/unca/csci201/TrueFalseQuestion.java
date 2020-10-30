@@ -18,7 +18,7 @@ public class TrueFalseQuestion implements Question {
 
 	@Override
 	public Answer[] getPossibleAnswers() throws NoAnswersException {
-		Answer[] a= {new TrueFalseAnswer(true), new TrueFalseAnswer(false)};
+		Answer[] a=null;//= {new TrueFalseAnswer(true), new TrueFalseAnswer(false)};
 		if(a==null)throw new NoAnswersException();
 		return a;
 	}
