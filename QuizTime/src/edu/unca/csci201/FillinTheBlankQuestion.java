@@ -2,8 +2,8 @@ package edu.unca.csci201;
 
 public class FillinTheBlankQuestion implements Question {
 	
-	String question="";
-	String theanswer="";
+	 private String question="";
+	 private String theanswer="";
 	
 	public FillinTheBlankQuestion(String quest, String answ) {
 		this.question=quest;

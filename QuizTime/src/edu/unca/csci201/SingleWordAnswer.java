@@ -1,7 +1,7 @@
 package edu.unca.csci201;
 
 public class SingleWordAnswer implements Answer {
-	String Answ;
+	private String Answ;
 	
 	public SingleWordAnswer(String answ) {
 		this.Answ=answ;
