@@ -7,59 +7,64 @@ import org.junit.Test;
 
 public class MultipleChoiceQuestionTest {
 
-	TrueFalseQuestion question;
+	MultipleChoiceQuestion question;
 	
 	@Before
 	public void setUp() throws Exception {
-		question = new TrueFalseQuestion("The answer to this question is true", true);
+		question = new MultipleChoiceQuestion("The Answer to this question is 'A'", "A",
+ "A. bongos", "B. cats", "C. elephants", "D. a hat");
+		
 	}
 
 	@Test
 	public void testGetTextPrompt() {
 
-		assertTrue("Text prompt not returned correctly", question.getTextPrompt().equals("The answer to this question is true"));
+		assertTrue("Text prompt not returned correctly", question.getTextPrompt().equals("The Answer to this question is 'A'"));
 	}
 
 	@Test
 	public void testGetPossibleAnswers() {
 		try {
 			question.getPossibleAnswers();
-		} catch (NoAnswersException e) {
-			// Exception thrown successfully (true / false doesn't give a list of possible answers)
 			return;
+		} catch (NoAnswersException e) {
+			// Should not throw exception for multiple choice
+			System.out.println("Answer[] failed for possible answers");
+			//return;
 		}
 		
-		fail("Exception not thrown when true/false question asked for a list of possible answers");
+		fail("Answer array was not returned for the question");
 	}
 
 	@Test
 	public void testGetCorrectAnswer() throws NoCorrectAnswerException {
 		Answer ans = question.getCorrectAnswer();
-		
-		TrueFalseAnswer tfAns = (TrueFalseAnswer) ans;
-		
-		assertTrue("Incorrect answer returned for the true/false question", tfAns.isSameAs(new TrueFalseAnswer(true)));
+
+		MultipleChoiceAnswer mcAns = (MultipleChoiceAnswer) ans;
+
+		assertTrue("Incorrect answer returned for the multipleChoicequestion", mcAns.isSameAs(new MultipleChoiceAnswer("A")));
 		
 	}
 
 	@Test
 	public void testConvertResponseToAnswer() throws InvalidResponseException {
-		Answer ans = question.convertResponseToAnswer("t");
+		Answer ans = question.convertResponseToAnswer("a");
 		
-		TrueFalseAnswer tfAns = (TrueFalseAnswer) ans;
+		MultipleChoiceAnswer mcAns = (MultipleChoiceAnswer) ans;
 		
-		assertTrue("Incorrect answer returned converting user response 't'", tfAns.isSameAs(new TrueFalseAnswer(true)));
+		assertTrue("Incorrect answer returned converting user response 'a'", mcAns.isSameAs(new MultipleChoiceAnswer("A")));
 
-		ans = question.convertResponseToAnswer("f");
+		ans = question.convertResponseToAnswer("b");
 		
-		tfAns = (TrueFalseAnswer) ans;
+		mcAns = (MultipleChoiceAnswer) ans;
 		
-		assertTrue("Incorrect answer returned converting user response 'f'", tfAns.isSameAs(new TrueFalseAnswer(false)));
+		assertTrue("Incorrect answer returned converting user response 'b'", mcAns.isSameAs(new MultipleChoiceAnswer("B")));
 		
 
 		try {
 			ans = question.convertResponseToAnswer("this is not a valid response");
 		} catch (InvalidResponseException e) {
+			System.out.println("invalid response caught");
 			// Correct exception thrown in response to invalid input
 			return;
 		}

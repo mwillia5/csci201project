@@ -7,19 +7,19 @@ import org.junit.Test;
 public class MultipleChoiceAnswerTest {
 
 	@Test
-	public void testCreateTrueFalseAnswer() {
+	public void testCreateMultipleChoiceAnswer() {
 		
-		TrueFalseAnswer answer1 = new TrueFalseAnswer(true);
-		TrueFalseAnswer answer2 = new TrueFalseAnswer(false);
+		MultipleChoiceAnswer answer1 = new MultipleChoiceAnswer("A");
+		MultipleChoiceAnswer answer2 = new MultipleChoiceAnswer("B");
 		
 	}
 
 	@Test
 	public void testIsSameAs() {
 
-		TrueFalseAnswer answer1 = new TrueFalseAnswer(true);
-		TrueFalseAnswer answer2 = new TrueFalseAnswer(true);
-		TrueFalseAnswer answer3 = new TrueFalseAnswer(false);
+		MultipleChoiceAnswer answer1 = new MultipleChoiceAnswer("A");
+		MultipleChoiceAnswer answer2 = new MultipleChoiceAnswer("A");
+		MultipleChoiceAnswer answer3 = new MultipleChoiceAnswer("B..");
 		
 		assertTrue("IsSameAs() fails self-test for true", answer1.isSameAs(answer1));
 		assertTrue("IsSameAs() fails self-test for false", answer2.isSameAs(answer2));
@@ -30,11 +30,11 @@ public class MultipleChoiceAnswerTest {
 
 	@Test
 	public void testToString() {
-		TrueFalseAnswer answer1 = new TrueFalseAnswer(true);
-		TrueFalseAnswer answer2 = new TrueFalseAnswer(false);
+		MultipleChoiceAnswer answer1 = new MultipleChoiceAnswer("A");
+		MultipleChoiceAnswer answer2 = new MultipleChoiceAnswer("B");
 		
-		assertTrue("toString() does not output 'true'", answer1.toString().equalsIgnoreCase("true"));
-		assertTrue("toString() does not output 'false'", answer2.toString().equalsIgnoreCase("false"));
+		assertTrue("toString() does not output 'A'", answer1.toString().equalsIgnoreCase("a"));
+		assertTrue("toString() does not output 'B'", answer2.toString().equalsIgnoreCase("b"));
 		
 	}
 

@@ -3,12 +3,23 @@ package edu.unca.csci201;
 public class MultipleChoiceQuestion implements Question {
 	
 	private String thequetsion="";
-	private String ans;
+	private MultipleChoiceAnswer ans;
 	private MultipleChoiceAnswer[] answers=new MultipleChoiceAnswer[4];
+	private MultipleChoiceAnswer userAnswer;
 	
-	public MultipleChoiceQuestion(String question, String ans) {
+	public MultipleChoiceQuestion(String question, String answ,String option1, 
+			String option2, String option3, String option4) {
 		this.thequetsion=question;
-		this.ans=ans;
+		this.ans=new MultipleChoiceAnswer(answ);
+		MultipleChoiceAnswer option11=new MultipleChoiceAnswer(option1);
+		MultipleChoiceAnswer option22=new MultipleChoiceAnswer(option2);
+		MultipleChoiceAnswer option33=new MultipleChoiceAnswer(option3);
+		MultipleChoiceAnswer option44=new MultipleChoiceAnswer(option4);
+
+		this.answers[0]=option11;
+		this.answers[1]=option22;
+		this.answers[2]=option33;
+		this.answers[3]=option44;
 	}
 	
 	@Override
@@ -19,24 +30,25 @@ public class MultipleChoiceQuestion implements Question {
 
 	@Override
 	public Answer[] getPossibleAnswers() throws NoAnswersException {
-		answers[0]=new MultipleChoiceAnswer("A");
-		answers[1]=new MultipleChoiceAnswer("B");
-		answers[2]=new MultipleChoiceAnswer("C");
-		answers[3]=new MultipleChoiceAnswer("D");
-		
+		if(answers==null)throw new NoAnswersException();
 		return answers;
 	}
 
 	@Override
 	public Answer getCorrectAnswer() throws NoCorrectAnswerException {
-		// TODO Auto-generated method stub
-		return null;
+		return this.ans;
 	}
 
 	@Override
 	public Answer convertResponseToAnswer(String userResponse) throws InvalidResponseException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		if(userResponse.equalsIgnoreCase("a")) userAnswer = new MultipleChoiceAnswer("A");
+		if(userResponse.equalsIgnoreCase("b")) userAnswer= new MultipleChoiceAnswer("B");
+		if(userResponse.equalsIgnoreCase("c")) userAnswer = new MultipleChoiceAnswer("C");
+		if(userResponse.equalsIgnoreCase("d")) userAnswer = new MultipleChoiceAnswer("D");
+		if(!userResponse.equalsIgnoreCase("a")&&!userResponse.equalsIgnoreCase("b")&&
+				!userResponse.equalsIgnoreCase("c")&&!userResponse.equalsIgnoreCase("d")) throw new InvalidResponseException();
+		return userAnswer;
 	}
 
 }
