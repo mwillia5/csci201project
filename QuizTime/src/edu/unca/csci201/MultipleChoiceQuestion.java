@@ -41,7 +41,7 @@ public class MultipleChoiceQuestion implements Question {
 
 	@Override
 	public Answer convertResponseToAnswer(String userResponse) throws InvalidResponseException {
-		
+		userResponse=userResponse.trim();
 		if(userResponse.equalsIgnoreCase("a")) userAnswer = new MultipleChoiceAnswer("A");
 		if(userResponse.equalsIgnoreCase("b")) userAnswer= new MultipleChoiceAnswer("B");
 		if(userResponse.equalsIgnoreCase("c")) userAnswer = new MultipleChoiceAnswer("C");

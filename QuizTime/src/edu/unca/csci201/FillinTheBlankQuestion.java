@@ -33,7 +33,10 @@ public class FillinTheBlankQuestion implements Question {
 	@Override
 	public Answer convertResponseToAnswer(String userResponse) throws InvalidResponseException {
 		SingleWordAnswer userans=new SingleWordAnswer(userResponse);
-		if(userResponse.contains(" ")||userResponse.isEmpty())throw new InvalidResponseException();
+		if(userResponse.contains(" ")) {
+			System.out.println("INVALID RESPONSE");
+			throw new InvalidResponseException();
+		}
 		return userans;
 	}
 
