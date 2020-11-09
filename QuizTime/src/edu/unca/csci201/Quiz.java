@@ -21,7 +21,7 @@ public class Quiz {
 		String response="";
 		for(Question a:thequiz) {
 			if(a==null) {
-				System.out.println("END OF Q ARRAY");
+				//System.out.println("END OF Q ARRAY");
 				break;
 			}
 			System.out.println(a.getTextPrompt());;

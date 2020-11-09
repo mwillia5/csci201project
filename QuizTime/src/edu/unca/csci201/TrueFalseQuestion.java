@@ -33,7 +33,7 @@ public class TrueFalseQuestion implements Question {
 	public Answer convertResponseToAnswer(String userResponse) throws InvalidResponseException {
 		String converted=userResponse.toUpperCase();
 		Boolean answ = null;
-		if(converted.equalsIgnoreCase("t")||converted.equals("true"))answ=true;
+		if(converted.equalsIgnoreCase("t")||converted.equalsIgnoreCase("true"))answ=true;
 		else if(converted.equalsIgnoreCase("f")||converted.equalsIgnoreCase("false"))answ=false;
 		else {throw new InvalidResponseException();}
 		Answer b=new TrueFalseAnswer(answ);
