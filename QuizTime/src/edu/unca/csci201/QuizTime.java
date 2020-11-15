@@ -1,5 +1,8 @@
 package edu.unca.csci201;
 
+import java.text.DecimalFormat;
+import java.util.Scanner;
+
 public class QuizTime {
 
 	public static void main(String[] args) {
@@ -22,7 +25,7 @@ public class QuizTime {
 		quiz1[5]=new TrueFalseQuestion("True or false: McDonald’s in Germany serves beer.", true);
 		quiz1[6]=new MultipleChoiceQuestion("Which of the following cities was never the capital of Germany?" , "C",
 				"A. Aachen", "B. Trier","C. Düsseldorf" ,"D. Cologne");
-		quiz1[7]=new FillinTheBlankQuestion("Radioactive _____ roam wild in Germany.", "boars");
+		quiz1[7]=new FillinTheBlankQuestion("Radioactive _____ (answer ends in an s) roam wild in Germany.", "boars");
 		quiz1[8]=new TrueFalseQuestion("True or false: Prison escape is not punishable by law in Germany", true);
 		quiz1[9]=new MultipleChoiceQuestion("What percentage of the Autobahn doesn't have a speed limit?",
 				"D", "A. 50%", "B. 85%", "C. 25%", "D. 65%");
@@ -47,8 +50,14 @@ public class QuizTime {
 		System.out.println("for True/False questions answer with the word 'true' or 'false' ");
 		System.out.println("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
 		double score=thequiz.giveQuiz();
-		System.out.println("Your score was: "+score);
-		
+		DecimalFormat df=new DecimalFormat("0.00");
+		System.out.println("Your score was: "+df.format(score)+" out of 100");
+		System.out.println("Enter 'OK' to continue to missed answers..");
+
+		Scanner scan2=new Scanner(System.in);
+		scan2.next();
+		thequiz.printwrongs();
+		scan2.close();
 	}
 
 }

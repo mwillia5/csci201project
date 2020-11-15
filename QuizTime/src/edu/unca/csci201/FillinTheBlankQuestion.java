@@ -34,7 +34,7 @@ public class FillinTheBlankQuestion implements Question {
 	public Answer convertResponseToAnswer(String userResponse) throws InvalidResponseException {
 		SingleWordAnswer userans=new SingleWordAnswer(userResponse);
 		if(userResponse.contains(" ")) {
-			System.out.println("INVALID RESPONSE");
+			//System.out.println("INVALID RESPONSE");
 			throw new InvalidResponseException();
 		}
 		return userans;
